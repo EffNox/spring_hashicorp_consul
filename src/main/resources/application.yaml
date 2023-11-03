@@ -1,0 +1,18 @@
+spring:
+  application.name: MS-CONSUL
+  main.banner-mode: off
+  cloud:
+    consul:
+      discovery:
+        health-check-critical-timeout: 30s
+        health-check-path: "/"
+        instance-id: ${spring.application.name}-${random.int}
+      host: 127.0.0.1
+      port: 8500
+      
+server:
+  server-header: ${spring.application.name}
+  port: ${PORT:${SERVER_PORT:0}}
+logging.level:
+  '[org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]': off
+  '[org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext]': off
